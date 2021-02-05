@@ -3,16 +3,28 @@
 
 #include<chrono>
 
-int main()
+int main(int argc,char* argv[])
 {
+	string wheelPath = "";
+	string dictionaryPath = "";
+	if (argc >= 3)
+	{
+		wheelPath = argv[1];
+		dictionaryPath = argv[2];
+	}
+	else
+	{
+		cout << "Wheel and dictionary path wasn't passed as parameter!" << endl;
+		system("pause");
+		return 0;
+	}
+	
+	Lock l(wheelPath, dictionaryPath);
+	
 
-	int i = 0;
-	Lock l("wheels2.txt");
 	float timer = 0;
-
-
-
-	int iteraions = 2000;
+	int i = 0;
+	int iteraions = 100000;
 	while (i < iteraions)
 	{
 		auto start = chrono::high_resolution_clock::now();

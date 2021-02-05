@@ -7,7 +7,7 @@ using namespace std;
 class Lock {
 public:
 
-	Lock(string path);
+	Lock(string path, string dictionaryPath);
 	Lock() : wheels(nullptr), d(nullptr) {}
 	~Lock();
 

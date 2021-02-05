@@ -1,6 +1,6 @@
 #include "lock.h"
 
-Lock::Lock(string path)
+Lock::Lock(string path, string dictionaryPath)
 {
 
 	ifstream file;
@@ -28,7 +28,7 @@ Lock::Lock(string path)
 		cout << "File "<< path<<" not found or corrupted!!" << endl;
 	}
 
-	d = new Dictionary("dictionary.txt", wheelNumber);
+	d = new Dictionary(dictionaryPath, wheelNumber);
 }
 
 Lock::~Lock()
