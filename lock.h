@@ -21,7 +21,7 @@ protected:
 
 	int wheelNumber;
 	int letterOnWheel;
-	char** wheels;
+	char** wheels;  //Holds wheels letters
 	Dictionary* d;
 
 

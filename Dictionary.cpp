@@ -2,6 +2,10 @@
 
 Dictionary::Dictionary(string path, int maxLength)
 {
+	/*This opens a file containing dictionary words. Words are sorted and placed in a unique vector according to the first letter. 
+	This increases performance during searching words in the combination. After writing every word from the dictionary every vector 
+	is sorting according to the string size. This also increases searching performance words in the combination. I have chosen vector 
+	container because it has the best iteration performance.*/
 	ifstream file;
 	file.open(path, ios::in);
 	if (file.good())
@@ -38,6 +42,14 @@ Dictionary::Dictionary(string path, int maxLength)
 	}
 }
 
+/*This finds all words in the combination. Firstly it removes potentially space in the first string's positions.
+And sets iterator to correct vector.The function searches words only with the same first letter as the combination's 
+first letter. This prevents from searching the same combinations multiple times. 
+
+Before the main iteration loop I set local variables, this increases performance because the program has quick access
+to these variables. Also setting ++j instead of j++ increase performance.
+
+After finding the word in the combination the word is inserted in the set container.*/
 void Dictionary::FindWord(const string& word)
 {
 	int spaceConuter = 0;

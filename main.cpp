@@ -1,7 +1,8 @@
+#pragma once
 #include"dictionary.h"
 #include"lock.h"
 
-#include<chrono>
+
 
 int main(int argc,char* argv[])
 {
@@ -20,27 +21,12 @@ int main(int argc,char* argv[])
 	}
 	
 	Lock l(wheelPath, dictionaryPath);
-	
-
-	float timer = 0;
-	int i = 0;
-	int iteraions = 100000;
-	while (i < iteraions)
-	{
-		auto start = chrono::high_resolution_clock::now();
-		l.FindCombinations();
-		auto stop = chrono::high_resolution_clock::now();
-		timer += std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count();
-		i++;
-	}
-
+	l.FindCombinations();
+		
 	for (auto s : l.GetFound())
 		cout << s << endl;
-	cout << l.GetFound().size() << endl;
-	cout << timer/ iteraions << " us" << endl;
+	cout << "Found "<< l.GetFound().size() << " words" <<endl;
 	system("pause");
-
-
 
 	return 0;
 }

@@ -13,7 +13,6 @@ class Dictionary{
 public:
 
 	Dictionary(string path, int maxLength);
-
 	Dictionary(): words(nullptr), maxWordLength(0) {}
 
 	~Dictionary() { delete words; }
