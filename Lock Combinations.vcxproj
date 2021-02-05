@@ -145,6 +145,7 @@
     <ClInclude Include="lock.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="lock.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

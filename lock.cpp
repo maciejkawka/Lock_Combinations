@@ -1,6 +1,6 @@
 #include "lock.h"
 
-Lock::Lock(string path): wheels(nullptr)
+Lock::Lock(string path)
 {
 
 	ifstream file;
@@ -21,10 +21,12 @@ Lock::Lock(string path): wheels(nullptr)
 			for (int j = 0; j < letterOnWheel; j++)
 				wheels[i][j] = buffor[j];
 		}
-
 	}
 	else
-		cout << "File not found or corrupted!!" << endl;
+	{
+		wheels = nullptr;
+		cout << "File "<< path<<" not found or corrupted!!" << endl;
+	}
 
 	d = new Dictionary("dictionary.txt", wheelNumber);
 }
@@ -33,27 +35,25 @@ Lock::~Lock()
 {
 	for (int i = 0; i < letterOnWheel; i++)
 		delete[] wheels[i];
-	delete wheels;
+	delete[] wheels;
 }
 
 void Lock::FindCombinations()
 {
-	if (wheels == nullptr)
+	if (wheels == nullptr||d==nullptr)
 		return;
 	if (!(wheelNumber && letterOnWheel))
 		return;
+	if (!d->isDictionaryCreated())
+		return;
 
 	Combinations(string(wheelNumber, ' '), wheelNumber - 1);
-
 }
 
 void Lock::Combinations(string temp, int i)
 {
 	if (i < 0)
-	{
-		//d->SlowerFind(temp);
 		return;
-	}
 
 	for (int j = 0; j < letterOnWheel; j++)
 	{

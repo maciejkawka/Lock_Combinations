@@ -8,22 +8,21 @@ class Lock {
 public:
 
 	Lock(string path);
+	Lock() : wheels(nullptr), d(nullptr) {}
 	~Lock();
 
 	void FindCombinations();
-	void FindInDictionary(const string& word);
 
-	set <string>& GetFound() { return d->foundwords; }
+	inline const set<string>& GetFound() const { return d->GetFoundWords(); }
+
 protected:
 
 	void Combinations(string temp, int i);
-	
 
 	int wheelNumber;
 	int letterOnWheel;
 	char** wheels;
 	Dictionary* d;
-	set<string> foundLetter;
-	set<string> allCombinations;
+
 
 };

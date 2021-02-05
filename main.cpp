@@ -5,15 +5,14 @@
 
 int main()
 {
-	//Dictionary d("dictionary.txt", 5);
-	//d.FindWord("wadog");
+
 	int i = 0;
-	Lock l("wheels.txt");
+	Lock l("wheels2.txt");
 	float timer = 0;
 
 
 
-	int iteraions = 1;
+	int iteraions = 2000;
 	while (i < iteraions)
 	{
 		auto start = chrono::high_resolution_clock::now();
